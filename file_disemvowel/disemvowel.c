@@ -1,6 +1,17 @@
 #include <stdlib.h>
-
+#include <stdio.h>
+#include <stdbool.h>
 #include "disemvowel.h"
+
+#define BUF_SIZE 1024
+
+
+bool hasVowel(char vowel){
+        return (vowel == 'a' || vowel == 'e' || vowel == 'i' || vowel == 'o' || vowel == 'u' ||
+                vowel == 'A' || vowel == 'E' || vowel == 'I' || vowel == 'O' || vowel == 'U');
+
+}
+
 
 char *disemvowel(char *str) {
 	char *newStr;
@@ -29,8 +40,11 @@ char *disemvowel(char *str) {
 }
 
 
-bool hasVowel(char vowel){
-	return (vowel == 'a' || vowel == 'e' || vowel == 'i' || vowel == 'o' || vowel == 'u' ||
-	        vowel == 'A' || vowel == 'E' || vowel == 'I' || vowel == 'O' || vowel == 'U');
+int main(int argc, char *argv[]) {
+  //FILE *inputFile;
+  //FILE *outputFile;
 
+  //disemvowel(inputFile,outputFile);
+
+  return 0;
 }
