@@ -29,10 +29,14 @@ void disemvowel(FILE* inputFile, FILE* outputFile){
 	char* in_buffer = (char*) calloc(BUF_SIZE,sizeof(char));
 	char* out_buffer = (char*) calloc(BUF_SIZE,sizeof(char));
 
+	while(!feof(inputFile)){
 	int elements_read = fread(in_buffer,sizeof(char),BUF_SIZE,inputFile);
-
 	int non_vowels = copy_non_vowels(elements_read,in_buffer,out_buffer);
 	fwrite(out_buffer,sizeof(char),non_vowels,outputFile);
+	}
+
+	free(in_buffer);
+	free(out_buffer);
 }
 
 
