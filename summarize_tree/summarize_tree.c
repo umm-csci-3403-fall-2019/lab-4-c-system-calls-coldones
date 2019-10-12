@@ -20,8 +20,6 @@ bool is_dir(const char* path) {
 	stat(path, &buf);
 	int checkDir = S_ISDIR(buf.st_mode);
 
-	free(buf);
-
 	if(checkDir!=0){
 		return true;
 	} else {
@@ -48,6 +46,33 @@ void process_directory(const char* path) {
    * with a matching call to chdir() to move back out of it when you're
    * done.
    */
+
+	DIR* dairyStream;
+	struct dirent *content; 
+	num_dirs++;
+	int files = 0;
+	//chdir(path); // go to dir 
+	
+	dairyStream = opendir(path);
+	
+	if(dairyStream!=NULL){
+		puts("read dir");
+		while((content=readdir(dairyStream))){
+			files++;
+			printf("File %3d: %s\n",files,content->d_name)
+		}
+	}
+
+	closedir(dairyStream);
+	
+			//printf("The path is %s\n",path);
+	//newPath = readdir(path); //loop over
+      //if(newPath!=NULL){	
+	//process_directory(newPath);
+      //}
+	//closedir(path); // close our working dir
+
+	//chdir(..); // get out 
 }
 
 void process_file(const char* path) {
