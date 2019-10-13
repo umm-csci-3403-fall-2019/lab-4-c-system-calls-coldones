@@ -5,6 +5,7 @@
 
 static int num_dirs, num_regular;
 
+// lets ftw do work and counts the directories and files 
 static int callback(const char *fpath, const struct stat *sb, int typeflag) {
     if(typeflag == FTW_D){
 	    num_dirs++;

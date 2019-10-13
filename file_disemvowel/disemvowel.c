@@ -5,13 +5,14 @@
 
 #define BUF_SIZE 1024
 
-
+// Helper function for checking if the string passed in has a vowel
 bool hasVowel(char vowel){
         return (vowel == 'a' || vowel == 'e' || vowel == 'i' || vowel == 'o' || vowel == 'u' ||
                 vowel == 'A' || vowel == 'E' || vowel == 'I' || vowel == 'O' || vowel == 'U');
 
 }
 
+// returns 'string lenght' for the non-vowel only file
 int copy_non_vowels(int num_chars, char* in_buf, char* out_buf){
 	int counter = 0;
 
@@ -25,6 +26,7 @@ int copy_non_vowels(int num_chars, char* in_buf, char* out_buf){
 	return counter;
 }
 
+// takes in input and output files and does the disemvoweling 
 void disemvowel(FILE* inputFile, FILE* outputFile){
 	char* in_buffer = (char*) calloc(BUF_SIZE,sizeof(char));
 	char* out_buffer = (char*) calloc(BUF_SIZE,sizeof(char));
@@ -39,7 +41,7 @@ void disemvowel(FILE* inputFile, FILE* outputFile){
 	free(out_buffer);
 }
 
-
+//main
 int main(int argc, char *argv[]) {
 
 	FILE *inputFile;

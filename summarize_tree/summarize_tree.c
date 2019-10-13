@@ -6,8 +6,10 @@
 #include <unistd.h>
 #include <string.h>
 
+//defining counters for files and directories
 static int num_dirs, num_regular;
 
+// checks if path works 
 bool is_dir(const char* path) {
 	
 	struct stat buf;
@@ -31,6 +33,7 @@ bool is_dir(const char* path) {
  */
 void process_path(const char*);
 
+// counts directories and has a recursive call to 'process_path'
 void process_directory(const char* path) {
 	DIR* dirStream;
 	struct dirent* content;
@@ -44,7 +47,7 @@ void process_directory(const char* path) {
 		while((content=readdir(dirStream))){
 			dname = content->d_name;
 			if(strcmp(dname,".")!=0 && strcmp(dname,"..")!=0){
-				process_path(dname);
+				process_path(dname); // recursive call 
 			}
 		}
 
@@ -56,12 +59,11 @@ void process_directory(const char* path) {
 }
 
 void process_file(const char* path) {
-  /*
-   * Update the number of regular files.
-   */
+   //Update the number of regular files.
 	num_regular++;
 }
 
+// recurses 
 void process_path(const char* path) {
   if (is_dir(path)) {
     process_directory(path);
@@ -70,6 +72,7 @@ void process_path(const char* path) {
   }
 }
 
+// main 
 int main (int argc, char *argv[]) {
   // Ensure an argument was provided.
   if (argc != 2) {
